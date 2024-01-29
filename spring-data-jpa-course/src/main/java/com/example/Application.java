@@ -1,13 +1,12 @@
 package com.example;
 
-import com.example.demo2.Client;
-import com.example.demo2.ClientRepository;
-import com.example.demo2.User;
-import com.example.demo2.UserRepository;
+import com.example.demo2.*;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+
+import java.util.Set;
 
 @SpringBootApplication
 public class Application {
@@ -19,7 +18,8 @@ public class Application {
     @Bean
     public CommandLineRunner commandLineRunner(
             ClientRepository clientRepository,
-            UserRepository userRepository
+            UserRepository userRepository,
+            AddressRepository addressRepository
     ){
         return args -> {
             //En este caso, primero se debe crear un usuario para tener un cliente, tabla user es fuerte
@@ -28,13 +28,23 @@ public class Application {
             userRepository.save(user);
 
             //el usuario que necesita Client, ya debe de existir, asi que primero lo traemos
-            Client client = new Client("Diego Mamani Ramos", user);
+            Client client = new Client("Diego Mamani Ramos", user, null);
             clientRepository.save(client);
+
+            Address address1 = new Address("Calle Romero", "78545-AGD", client);
+            Address address2 = new Address("Calle San Lorenzo", "78545-AGD", client);
+            Address address3 = new Address("Calle Retamas", "78545-AGD", client);
+            Address address4 = new Address("Zona Las Lomas", "78545-AGD", client);
+            addressRepository.save(address1);
+            addressRepository.save(address2);
+            addressRepository.save(address3);
+            addressRepository.save(address4);
+
+            client.setAddresses(Set.of(address1, address2, address3, address4));
 
 
         };
 
     }
-
 
 }
