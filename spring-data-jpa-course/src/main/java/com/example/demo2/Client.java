@@ -38,14 +38,24 @@ public class Client {
     private Set<Address> addresses = new HashSet<>();
 
 
-    public Client(String clientName, User clientUser, Set<Address> addresses) {
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "client_product",    //Esto sera el nombre de la tabla
+            joinColumns = {@JoinColumn(name = "fk_client")},
+            inverseJoinColumns = {@JoinColumn(name = "fk_product")}
+    )
+    private Set<Product> products = new HashSet<>();
+
+
+    public Client(String clientName, User clientUser, Set<Address> addresses, Set<Product> products) {
         this.clientName = clientName;
         this.clientUser = clientUser;
         this.addresses = addresses;
+        this.products = products;
     }
 
     public Client(){}
-
 
     public Long getClientId() {
         return clientId;
@@ -71,10 +81,17 @@ public class Client {
         return addresses;
     }
 
+    public Set<Product> getProducts() {
+        return products;
+    }
+
+    public void setProducts(Set<Product> products) {
+        this.products = products;
+    }
+
     public void setAddresses(Set<Address> addresses) {
         this.addresses = addresses;
     }
-
 
     @Override
     public String toString() {
@@ -83,6 +100,7 @@ public class Client {
                 ", clientName='" + clientName + '\'' +
                 ", clientUser=" + clientUser +
                 ", addresses=" + addresses +
+                ", products=" + products +
                 '}';
     }
 }
