@@ -1,9 +1,6 @@
 package com.relaciones2.demo;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class Department {
@@ -12,5 +9,9 @@ public class Department {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long dId;
     private String dName;
+
+    @OneToOne(mappedBy = "eDepartment")
+    private Employee dEmployee;
+
 
 }
