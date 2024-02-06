@@ -10,7 +10,7 @@ public class CopiaLibro {
     private int numCopiaLibro;
 
     //Este es el lado no propietario
-   @ManyToOne
+    @ManyToOne
     private Libro libroCopia;
 
 
