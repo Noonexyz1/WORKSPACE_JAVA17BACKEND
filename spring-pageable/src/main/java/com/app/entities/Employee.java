@@ -1,6 +1,5 @@
 package com.app.entities;
 
-
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -31,7 +30,7 @@ public class Employee {
     @Temporal(TemporalType.DATE)
     private LocalDate dateOfBirth;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "department_id")
     private Department department;
 

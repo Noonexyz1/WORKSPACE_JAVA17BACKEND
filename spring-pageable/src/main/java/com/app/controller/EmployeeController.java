@@ -1,7 +1,7 @@
 package com.app.controller;
 
 import com.app.entities.Employee;
-import com.app.persistence.EmployeeRepository;
+import com.app.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,41 +12,32 @@ import java.util.Optional;
 public class EmployeeController {
 
     @Autowired
-    private EmployeeRepository employeeRepository;
+    private EmployeeService employeeRepository;
 
     @GetMapping("/employees")
     public List<Employee> getAllEmployees() {
-        return employeeRepository.findAll();
+        return employeeRepository.getAllEmployees();
     }
 
     @GetMapping("/employees/{id}")
     public Optional<Employee> getEmployeeById(@PathVariable Long id) {
-        return employeeRepository.findById(id);
+        return employeeRepository.getEmployeeById(id);
     }
 
+    //SI o SI se envia el ID del departamento, y simplemente enviar el id del departamento o el id mas algunos parametros de Departamento
     @PostMapping("/employees")
     public Employee createEmployee(@RequestBody Employee employee) {
-        return employeeRepository.save(employee);
+        return employeeRepository.createEmployee(employee);
     }
 
     @PutMapping("/employees/{id}")
     public Employee updateEmployee(@PathVariable Long id, @RequestBody Employee employeeDetails) {
-        Employee employee = employeeRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Employee not found with id: " + id));
-        employee.setName(employeeDetails.getName());
-        employee.setLastName(employeeDetails.getLastName());
-        employee.setEmail(employeeDetails.getEmail());
-        employee.setPhone(employeeDetails.getPhone());
-        employee.setAge(employeeDetails.getAge());
-        employee.setHeight(employeeDetails.getHeight());
-        employee.setMarried(employeeDetails.isMarried());
-        employee.setDateOfBirth(employeeDetails.getDateOfBirth());
-        employee.setDepartment(employeeDetails.getDepartment());
-        return employeeRepository.save(employee);
+        return employeeRepository.updateEmployee(id, employeeDetails);
     }
 
     @DeleteMapping("/employees/{id}")
     public void deleteEmployee(@PathVariable Long id) {
-        employeeRepository.deleteById(id);
+        employeeRepository.deleteEmployee(id);
     }
+
 }

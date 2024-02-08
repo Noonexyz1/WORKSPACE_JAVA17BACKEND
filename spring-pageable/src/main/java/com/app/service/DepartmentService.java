@@ -15,7 +15,9 @@ public class DepartmentService {
     private DepartmentRepository departmentRepository;
 
     public List<Department> getAllDepartments() {
-        return departmentRepository.findAll();
+        List<Department> listaDepartment = departmentRepository.findAll();
+        //listaDepartment: de todos modos los traer aun que sea ciclicas pero para mostrar en json, no se podra mostrar, tomar en cuenta
+        return listaDepartment;
     }
 
     public Optional<Department> getDepartmentById(Long id) {

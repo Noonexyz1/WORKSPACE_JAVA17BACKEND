@@ -1,5 +1,7 @@
 package com.app.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -20,6 +22,7 @@ public class Department {
     private String city;
 
     @OneToMany(mappedBy = "department", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore //Esto solamente es para ignonar esta columnas ciclicas en la salida del JSON
     private List<Employee> employeeList;
 
 }

@@ -15,10 +15,13 @@ public class EmployeeService {
     private EmployeeRepository employeeRepository;
 
     public List<Employee> getAllEmployees() {
-        return employeeRepository.findAll();
+        List<Employee> listaEmployee = employeeRepository.findAll();
+        return listaEmployee;
     }
 
     public Optional<Employee> getEmployeeById(Long id) {
+        Optional<Employee> empl = employeeRepository.findById(id);
+        Employee es = empl.get();
         return employeeRepository.findById(id);
     }
 
