@@ -2,7 +2,12 @@ package com.app.service;
 
 import com.app.entities.Department;
 import com.app.persistence.DepartmentRepository;
+import org.hibernate.type.SortedSetType;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,9 +21,22 @@ public class DepartmentService {
 
     public List<Department> getAllDepartments() {
         List<Department> listaDepartment = departmentRepository.findAll();
-        //listaDepartment: de todos modos los traer aun que sea ciclicas pero para mostrar en json, no se podra mostrar, tomar en cuenta
         return listaDepartment;
     }
+
+
+    public List<Department> getAllDepartmentsByCity() {
+        Sort criterio = Sort.by(Sort.Direction.ASC, "name");
+        Pageable primeraPaginaConDosElementos = PageRequest.of(0, 20, criterio);
+        
+        // el método findAllByCity() primero aplicará el filtro para obtener todas las filas que tengan "Medellin" como
+        // ciudad y luego aplicará el criterio de ordenamiento ascendente por el campo "name". Por lo tanto, obtendrás
+        // una lista de todos los departamentos que tienen "Medellin" como ciudad, ordenados alfabéticamente por el
+        // nombre del departamento.
+        List<Department> listaDepartment = departmentRepository.findAllByCity("Medellin", primeraPaginaConDosElementos);
+        return listaDepartment;
+    }
+
 
     public Optional<Department> getDepartmentById(Long id) {
         return departmentRepository.findById(id);

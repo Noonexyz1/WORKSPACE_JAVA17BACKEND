@@ -20,6 +20,10 @@ public class DepartmentController {
     public List<Department> getAllDepartments() {
         return departmentRepository.getAllDepartments();
     }
+    @GetMapping("/rowsbycity")
+    public List<Department> getAllDepartmentsByCity() {
+        return departmentRepository.getAllDepartmentsByCity();
+    }
 
     @GetMapping("/departments/{id}")
     public Optional<Department> getDepartmentById(@PathVariable Long id) {

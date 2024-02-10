@@ -8,14 +8,17 @@
 		<version>3.2.1</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
+
 	<groupId>com.app</groupId>
-	<artifactId>SpringValidation</artifactId>
+	<artifactId>spring-pageable</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>SpringValidation</name>
+	<name>spring-pageable</name>
 	<description>Spring Boot App Validation</description>
+
 	<properties>
 		<java.version>17</java.version>
 	</properties>
+
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
