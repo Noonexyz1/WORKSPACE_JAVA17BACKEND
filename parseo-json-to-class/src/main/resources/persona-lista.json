@@ -1,0 +1,86 @@
+{
+  "results": [
+
+    {
+      "gender": "female",
+
+      "name": {
+                "title": "Ms",
+                "first": "Ynske",
+                "last": "Van der Geld"
+        },
+
+      "location": {
+        "street": {
+          "number": 6637,
+          "name": "Fokkeplein"
+        },
+
+        "city": "Littenseradiel",
+        "state": "Utrecht",
+        "country": "Netherlands",
+        "postcode": "0023 JV",
+
+        "coordinates": {
+            "latitude": "30.6184",
+            "longitude": "66.6547"
+        },
+
+        "timezone": {
+          "offset": "-6:00",
+          "description": "Central Time (US & Canada), Mexico City"
+        }
+
+      },
+
+      "email": "ynske.vandergeld@example.com",
+
+      "login": {
+        "uuid": "fcb3a87c-b17b-44d4-afb9-c9b51a6d10dd",
+        "username": "organicpeacock657",
+        "password": "pippen",
+        "salt": "fDQsZqk8",
+        "md5": "614ba8c22d38367fa8ab69623f697c03",
+        "sha1": "86c114297e7f85b13d1f9afe3591628940b412d5",
+        "sha256": "7fac787eed0322a1cc33adbb82b46ac857a1aade9c0916bedf24ed8a3a73858f"
+      },
+
+      "dob": {
+        "date": "1986-01-08T06:36:48.422Z",
+        "age": 38
+      },
+
+      "registered": {
+        "date": "2008-12-04T10:58:01.763Z",
+        "age": 15
+      },
+
+      "phone": "(0275) 813815",
+
+      "cell": "(06) 96451639",
+
+      "id": {
+        "name": "BSN",
+        "value": "45642587"
+      },
+
+      "picture": {
+        "large": "https://randomuser.me/api/portraits/women/10.jpg",
+        "medium": "https://randomuser.me/api/portraits/med/women/10.jpg",
+        "thumbnail": "https://randomuser.me/api/portraits/thumb/women/10.jpg"
+      },
+
+      "nat": "NL"
+
+    }
+
+  ],
+
+  "info": {
+    "seed": "29bf3b472c4a6b0c",
+    "results": 1,
+    "page": 1,
+    "version": "1.4"
+  }
+
+}
